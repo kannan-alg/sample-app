@@ -1,5 +1,7 @@
 #! /bin/bash -e
 
+set +x
+
 VERSION=$(cat pom.xml | grep "<version>" | head -1 | awk '{print $1}' | sed "s/<version>//" | sed "s/<.*//")
 docker build -t devopsmptech/application:$VERSION .
 docker login -u devopsmptech -p "${DOCKER_PASSWORD}"
